@@ -85,7 +85,7 @@ jobs:
         rm -rf .tox/py*/tmp/**/*_release-asc
         rm -rf .tox/py*/tmp/*current
     - name: Upload test artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: always()
       with:
         name: tests-${{ matrix.python-version }}-${{ matrix.min_versions }}
