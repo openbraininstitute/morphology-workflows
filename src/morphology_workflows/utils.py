@@ -1,6 +1,7 @@
 """Util functions."""
 
 import hashlib
+import importlib.resources
 import logging
 import re
 import shutil
@@ -17,14 +18,10 @@ from morph_tool.converter import convert
 from morph_tool.exceptions import MorphToolException
 from morphio import Option
 from morphio.mut import Morphology
-from pkg_resources import resource_filename
 from tqdm import tqdm
 
 _TEMPLATES = Path(
-    resource_filename(
-        "morphology_workflows",
-        "_templates",
-    )
+    importlib.resources.files("morphology_workflows") / "_templates"
 )
 
 tqdm.pandas()

@@ -1,9 +1,9 @@
 ![workflow Logo](docs/source/logo/BBP-Morphology-Workflows.jpg)
 
-[![Version](https://img.shields.io/pypi/v/morphology-workflows)](https://github.com/BlueBrain/morphology-workflows/releases)
-[![Build status](https://github.com/BlueBrain/morphology-workflows/actions/workflows/run-tox.yml/badge.svg?branch=main)](https://github.com/BlueBrain/morphology-workflows/actions)
+[![Version](https://img.shields.io/pypi/v/morphology-workflows)](https://github.com/openbraininstitute/morphology-workflows/releases)
+[![Build status](https://github.com/openbraininstitute/morphology-workflows/actions/workflows/run-tox.yml/badge.svg?branch=main)](https://github.com/openbraininstitute/morphology-workflows/actions)
 [![Coverage](https://codecov.io/github/BlueBrain/morphology-workflows/coverage.svg?branch=main)](https://codecov.io/github/BlueBrain/morphology-workflows?branch=main)
-[![License](https://img.shields.io/badge/License-Apache%202-blue)](https://github.com/BlueBrain/morphology-workflows/blob/main/LICENSE.txt)
+[![License](https://img.shields.io/badge/License-Apache%202-blue)](https://github.com/openbraininstitute/morphology-workflows/blob/main/LICENSE.txt)
 [![Documentation status](https://readthedocs.org/projects/morphology-workflows/badge/?version=latest)](https://morphology-workflows.readthedocs.io/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10809196.svg)](https://doi.org/10.5281/zenodo.10809196)
 
@@ -164,7 +164,7 @@ The inputs should consist in:
 * an optional ``logging.conf`` file containing the logging configuration. If you prefer default logging
   behavior, remove this file and comment line in ``logging_conf_file = logging.conf`` in ``luigi.cfg``.
 
-The [examples](https://github.com/BlueBrain/morphology-workflows/tree/main/examples) folder contains
+The [examples](https://github.com/openbraininstitute/morphology-workflows/tree/main/examples) folder contains
 examples for the ``luigi.cfg`` and ``logging.conf`` files.
 
 These inputs can be created using the **Fetch** workflow that downloads morphologies from online
@@ -231,7 +231,7 @@ The morphologies marked as invalid may be fixed manually before rerunning the wo
 
 ## Examples
 
-The [examples](https://github.com/BlueBrain/morphology-workflows/tree/main/examples) folder contains
+The [examples](https://github.com/openbraininstitute/morphology-workflows/tree/main/examples) folder contains
 a simple example that will fetch and process a set of morphologies.
 A ``dataset.csv`` file is provided which is taken as input for the workflows. A ``luigi.cfg`` file
 is also provided to give a default configuration for the workflows.

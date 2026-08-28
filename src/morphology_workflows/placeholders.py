@@ -1,5 +1,6 @@
 """Placeholders functions."""
 
+import importlib.resources
 import logging
 import warnings
 from pathlib import Path
@@ -9,7 +10,6 @@ import neurom
 import numpy as np
 import pandas as pd
 from neurom.apps import morph_stats
-from pkg_resources import resource_filename
 
 logger = logging.getLogger(__name__)
 
@@ -134,10 +134,8 @@ def compute_placeholders(
                     mtype,
                 )
                 df_placeholder = pd.read_csv(
-                    resource_filename(
-                        "morphology_workflows",
-                        "_data/default_placeholders.csv",
-                    ),
+                    importlib.resources.files("morphology_workflows")
+                    / "_data/default_placeholders.csv",
                     header=[0, 1],
                 )
             else:
