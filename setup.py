@@ -36,7 +36,8 @@ doc_reqs = [
     "m2r2",
     "sphinx-argparse",
     "sphinx-autoapi",
-    "sphinx-bluebrain-theme",
+    "sphinx>=8.2,<10",
+    "obi-sphinx-theme>=2.0.0",
     "sphinx-jsonschema",
 ]
 
