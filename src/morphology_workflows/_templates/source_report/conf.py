@@ -11,14 +11,14 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-from pkg_resources import get_distribution
+from importlib.metadata import version as package_version
 
 # -- Project information -----------------------------------------------------
 
 project = "Morphology Workflows"
 
 # The short X.Y version
-version = get_distribution("morphology_workflows").version
+version = package_version("morphology_workflows")
 
 # The full version, including alpha/beta/rc tags
 release = version

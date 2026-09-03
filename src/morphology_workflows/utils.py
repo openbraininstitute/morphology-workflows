@@ -20,9 +20,7 @@ from morphio import Option
 from morphio.mut import Morphology
 from tqdm import tqdm
 
-_TEMPLATES = Path(
-    importlib.resources.files("morphology_workflows") / "_templates"
-)
+_TEMPLATES = Path(importlib.resources.files("morphology_workflows") / "_templates")
 
 tqdm.pandas()
 

@@ -540,7 +540,7 @@ class TestCheckNeurites:
             1: [[0, 1, 0], [0, 6, 0], [1, 7, 0]],
             2: [[0, 0, 0], [0, -100, 0]],
         }
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
 
@@ -570,7 +570,7 @@ class TestCheckNeurites:
             1: [[0, 1, 0], [0, 6, 0], [1, 7, 0]],
             2: [[0, 0, 0], [0, -100, 0]],
         }
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
         assert_array_almost_equal(res_morph.soma.points, [[-0.5, 0.5, 0]])
@@ -589,7 +589,7 @@ class TestCheckNeurites:
             1: [[0, 1, 0], [0, 6, 0], [1, 7, 0]],
             2: [[0, 0, 0], [0, -100, 0]],
         }
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
         assert_array_almost_equal(
@@ -650,7 +650,7 @@ class TestCheckNeurites:
             1: [[0, 1, 0], [0, 6, 0], [1, 7, 0]],
             2: [[0, 0, 0], [0, -100, 0]],
         }
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
 
@@ -709,7 +709,7 @@ class TestFixNeuritesInSoma:
                 [1, 7, 0],
             ],
         }
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
 
@@ -747,7 +747,7 @@ class TestAlign:
     def check_res(self, res, expected):
         """Compare the result points to the expected ones."""
         res_morph = Morphology(res["morph_path"])
-        for i, j in zip(res_morph.sections.items(), expected.items()):
+        for i, j in zip(res_morph.sections.items(), expected.items(), strict=False):
             assert i[0] == j[0]
             assert_array_almost_equal(i[1].points, j[1])
 

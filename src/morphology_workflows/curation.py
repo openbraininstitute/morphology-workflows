@@ -152,7 +152,7 @@ def _reconnect_to_soma(m):
         """Recursively copy downstream from section_base to section."""
         for base_child in section_base.children:
             section.append_section(base_child)
-        for child, base_child in zip(section.children, section_base.children):
+        for child, base_child in zip(section.children, section_base.children, strict=False):
             _copy(child, base_child)
 
     for root in m.root_sections:

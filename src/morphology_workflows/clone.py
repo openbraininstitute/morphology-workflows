@@ -421,7 +421,7 @@ def graft_axons(
     new_annotations_path = Path(output_path) / "annotations"
     new_annotations_path.mkdir(parents=True, exist_ok=True)
 
-    @functools.lru_cache(maxsize=None)
+    @functools.cache
     def load_morph(name):
         """Copy the morphology and the annotation (only once thanks to the cache)."""
         morph_path, annotation_path = df.loc[name, ["morph_path", "annotation_path"]].values
@@ -522,7 +522,7 @@ def convert_to_json_type(dict_):
     for k, v in dict_.items():
         try:
             json_value = json.loads(v)
-            if isinstance(json_value, (int, float)):
+            if isinstance(json_value, int | float):
                 dict_[k] = float(json_value)
             elif isinstance(json_value, list):
                 dict_[k] = json_value
@@ -660,8 +660,7 @@ class PlacementAnnotation(MutableMapping):
         If the file is missing, an rule-less annotation is returned
         """
         file_path = str(file_path)
-        if file_path.endswith(".xml"):
-            file_path = file_path[:-4]
+        file_path = file_path.removesuffix(".xml")
         with open(str(file_path) + ".xml", encoding="utf-8") as fd:
             return cls.from_xml_string(fd.read())
 
