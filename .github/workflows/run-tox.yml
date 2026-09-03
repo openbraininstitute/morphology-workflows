@@ -30,12 +30,10 @@ jobs:
     - name: Get current month
       id: date
       run: echo "date=$(date +'%Y-%m')" >> $GITHUB_OUTPUT
-    - name: Cache APT Packages
-      uses: awalsh128/cache-apt-pkgs-action@latest
-      with:
-        packages: graphviz libhdf5-dev
-        version: 1.0
-        execute_install_scripts: true
+    - name: Install system packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphviz libhdf5-dev
     - name: Cache tox and precommit environments
       uses: actions/cache@v4
       with:
