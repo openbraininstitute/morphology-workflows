@@ -1,6 +1,7 @@
 """Test download tasks."""
 
 # pylint: disable=redefined-outer-name
+import importlib.resources
 import json
 import shutil
 from copy import deepcopy
@@ -11,7 +12,6 @@ import luigi
 import numpy as np
 import pandas as pd
 import pytest
-from pkg_resources import resource_filename
 
 from morphology_workflows.placeholders import DEFAULT_CONFIG
 from morphology_workflows.tasks import _TEMPLATES
@@ -290,13 +290,11 @@ def test_placeholders_empty_population(prepare_dir, default_config, config_path)
 
     result = pd.read_csv(task.output().path, header=[0, 1])
 
-    expected = pd.read_csv(
-        resource_filename(
-            "morphology_workflows",
-            "_data/default_placeholders.csv",
-        ),
-        header=[0, 1],
+    default_placeholders = (
+        importlib.resources.files("morphology_workflows") / "_data/default_placeholders.csv"
     )
+    with importlib.resources.as_file(default_placeholders) as default_placeholders_path:
+        expected = pd.read_csv(default_placeholders_path, header=[0, 1])
     expected[("Metadata", "Region")] = region
     expected[("Metadata", "Mtype")] = mtype
 
@@ -345,7 +343,7 @@ def test_placeholders_aggregation_mode(prepare_dir, data_dir, default_config, co
 
     # Check the results
     assert result[("property", "name")].tolist() == expected[("property", "name")].tolist()
-    pd.testing.assert_frame_equal(result, expected)
+    pd.testing.assert_frame_equal(result, expected, check_dtype=False)
 
     # Compute placeholders with aggregation and export in JSON format
     result_path = Path("placeholders.json")

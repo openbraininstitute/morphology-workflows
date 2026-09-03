@@ -4,7 +4,6 @@ import importlib.resources
 import logging
 import warnings
 from pathlib import Path
-from typing import Optional
 
 import neurom
 import numpy as np
@@ -58,7 +57,7 @@ DEFAULT_CONFIG = {
 
 
 def select_population(
-    input_morphologies: str, region: Optional[str], mtype: Optional[str]
+    input_morphologies: str, region: str | None, mtype: str | None
 ) -> neurom.core.Population:
     """Compute the placeholder values for a given region - mtype couple."""
     logger.debug("Get population for %s in %s from %s", mtype, region, input_morphologies)
@@ -91,7 +90,7 @@ def select_population(
 
 def compute_placeholders(
     input_morphologies: str,
-    global_config: Optional[dict] = None,
+    global_config: dict | None = None,
     nb_jobs: int = 1,
 ) -> pd.DataFrame:
     """Compute the placeholder values for a given region - mtype couple."""

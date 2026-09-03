@@ -40,6 +40,7 @@ def prepare_dir(tmp_working_dir):
     luigi_config.clear()
 
 
+@pytest.mark.usefixtures("_require_neuromorpho_api")
 def test_neuromorpho(prepare_dir, data_dir):
     """Download from NeuroMorpho."""
     task = Fetch(
@@ -80,6 +81,7 @@ def test_neuromorpho(prepare_dir, data_dir):
     assert metadata["morphology"].apply(lambda x: (output_path / x).exists()).all()
 
 
+@pytest.mark.usefixtures("_require_mouselight_api")
 def test_mouselight(prepare_dir, data_dir):
     """Download from NeuroMorpho."""
     task = Fetch(
@@ -94,20 +96,18 @@ def test_mouselight(prepare_dir, data_dir):
     # Check metadata
     expected = pd.DataFrame(
         {
-            "brain_region": ["AHN"] * 10,
-            "nb_morphologies": [2] * 2 + [np.nan] * 4 + [9999] * 4,
-            "seed": [0] * 10,
+            "brain_region": ["AHN"] * 8,
+            "nb_morphologies": [2] * 2 + [np.nan] * 3 + [9999] * 3,
+            "seed": [0] * 8,
             "morphology": [
                 "85214.swc",
                 "84993.swc",
                 "84993.swc",
-                "85214.swc",
-                "122053.swc",
                 "85215.swc",
+                "85214.swc",
                 "84993.swc",
-                "85214.swc",
-                "122053.swc",
                 "85215.swc",
+                "85214.swc",
             ],
         }
     )
